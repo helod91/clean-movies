@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+
+    def sdkVersion = [:]
+    sdkVersion.minSdkVersion = 23
+    sdkVersion.targetSdkVersion = 29
+    sdkVersion.compileSdkVersion = 29
+    ext.sdkVersion = sdkVersion
+
+
+    ext.rxJava = "io.reactivex.rxjava2:rxjava:2.1.6"
+    ext.rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+    ext.retrofit = "com.squareup.retrofit2:retrofit:2.3.0"
+    ext.retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:2.3.0"
+    ext.retrofitRxJava2Adapter = "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    ext.retrofitLoggingInterceptors = "com.squareup.okhttp3:logging-interceptor:3.8.0"
+    ext.koin = "org.koin:koin-android-viewmodel:2.0.1"
+    ext.coil = "io.coil-kt:coil:0.10.0"
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
