@@ -50,8 +50,8 @@ class SearchMoviesActivity :
             startActivity(openMovieDetails)
         }
 
-        observeSuccess(viewModel.searchMoviesResult, binding.searchMoviesLoading, Consumer {
+        observeSuccess(viewModel.searchMoviesResult, Consumer {
             adapter.data = it
-        })
+        }, binding.searchMoviesLoading)
     }
 }

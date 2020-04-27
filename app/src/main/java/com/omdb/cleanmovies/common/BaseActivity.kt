@@ -54,8 +54,8 @@ abstract class BaseActivity<V : ViewDataBinding, M : BaseViewModel>(
 
     protected fun <RequestData> observeSuccess(
         liveData: LiveData<Data<RequestData>>,
-        progress: ProgressBar? = null,
-        successAction: Consumer<RequestData>
+        successAction: Consumer<RequestData>,
+        progress: ProgressBar? = null
     ) {
         liveData.observe(this, Observer {
             progress?.visibility = View.GONE

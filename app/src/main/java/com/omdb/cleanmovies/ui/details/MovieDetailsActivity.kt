@@ -22,9 +22,9 @@ class MovieDetailsActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        observeSuccess(viewModel.movieDetailsResult, binding.movieDetailsLoading, Consumer {
+        observeSuccess(viewModel.movieDetailsResult, Consumer {
             populateUI(it)
-        })
+        }, binding.movieDetailsLoading)
         viewModel.getMovieDetails(intent.getStringExtra(FLAG_MOVIE_ID))
 
         supportActionBar?.title = intent.getStringExtra(FLAG_MOVIE_TITLE)
