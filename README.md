@@ -1,5 +1,5 @@
 # Clean movies
-A sample movie database app utilizing clean architecture written in pure kotlin
+A sample movie database app utilizing clean architecture
 
 ### Used technologies
 
