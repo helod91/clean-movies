@@ -2,11 +2,10 @@ package com.omdb.cleanmovies.ui.search
 
 import androidx.lifecycle.MutableLiveData
 import com.omdb.cleanmovies.common.BaseViewModel
+import com.omdb.cleanmovies.common.subscribeWithAndroidOperators
 import com.omdb.cleanmovies.models.Data
 import com.omdb.domain.models.MovieSearchModel
 import com.omdb.domain.usecases.SearchMoviesUseCase
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class SearchMoviesViewModel(
     private val searchMoviesUseCase: SearchMoviesUseCase
@@ -18,9 +17,7 @@ class SearchMoviesViewModel(
         searchMoviesResult.value = Data.loading()
 
         searchMoviesUseCase.execute(title)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
+            .subscribeWithAndroidOperators(
                 { result ->
                     if (result.success)
                         searchMoviesResult.value = Data.success(result.movies)
